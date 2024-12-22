@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-12-11T07:59:32.463Z</updated>
+  <updated>2024-12-22T12:49:11.778Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>脚本快速重启Go项目</title>
+    <link href="http://example.com/2024/12/22/%E8%84%9A%E6%9C%AC%E5%BF%AB%E9%80%9F%E9%87%8D%E5%90%AFGo%E9%A1%B9%E7%9B%AE/"/>
+    <id>http://example.com/2024/12/22/%E8%84%9A%E6%9C%AC%E5%BF%AB%E9%80%9F%E9%87%8D%E5%90%AFGo%E9%A1%B9%E7%9B%AE/</id>
+    <published>2024-12-22T12:46:06.000Z</published>
+    <updated>2024-12-22T12:49:11.778Z</updated>
+    
+    <content type="html"><![CDATA[<p>创建restart.sh</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pid=$(netstat -nlp|grep 8080|awk &#x27;&#123;print $7&#125;&#x27;|awk -F &quot;/&quot; &#x27;&#123; print $1 &#125;&#x27;);</span><br><span class="line">echo &quot;example used pid=$&#123;pid&#125;&quot;</span><br><span class="line"></span><br><span class="line">if [ -n &quot;$&#123;pid&#125;&quot; ]; then</span><br><span class="line"> kill -9 $&#123;pid&#125;;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">chmod +x example</span><br><span class="line">nohup ./example  &gt;log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure><p>执行命令 chmod +x restart.sh 来赋予脚本执行权限<br>重启命令 sh restart.sh</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;创建restart.sh&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;</summary>
+      
+    
+    
+    
+    <category term="server" scheme="http://example.com/categories/server/"/>
+    
+    
+    <category term="go" scheme="http://example.com/tags/go/"/>
+    
+  </entry>
   
   <entry>
     <title>日常操作主要是以下几个</title>
