@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-12-22T12:49:11.778Z</updated>
+  <updated>2025-01-11T14:33:48.196Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Go应用Nginx配置SSL证书</title>
+    <link href="http://example.com/2025/01/11/Go%E5%BA%94%E7%94%A8nginx%E9%85%8D%E7%BD%AESSL%E8%AF%81%E4%B9%A6/"/>
+    <id>http://example.com/2025/01/11/Go%E5%BA%94%E7%94%A8nginx%E9%85%8D%E7%BD%AESSL%E8%AF%81%E4%B9%A6/</id>
+    <published>2025-01-11T14:19:08.000Z</published>
+    <updated>2025-01-11T14:33:48.196Z</updated>
+    
+    <content type="html"><![CDATA[<p>SSL证书配置前:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;  # 监听 HTTP 端口 80</span><br><span class="line">    server_name api.octmon.com;  # 设置你的域名 </span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://127.0.0.1:8080;  # 转发请求到 Go 应用的 8080 端口</span><br><span class="line">        proxy_set_header Host $host;  # 保留原始请求的 Host 头</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;  # 传递客户端真实 IP 地址</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  # 转发客户端的 IP 地址</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $scheme;  # 保留请求协议（HTTP 或 HTTPS）</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>SSL证书配置后:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;  # 监听 HTTP 端口 80</span><br><span class="line">    server_name api.octmon.com;  # 设置你的域名</span><br><span class="line"></span><br><span class="line">    # 将 HTTP 请求重定向到 HTTPS</span><br><span class="line">    location / &#123;</span><br><span class="line">        return 301 https://$host$request_uri;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen 443 ssl;  # 监听 HTTPS 端口 443</span><br><span class="line">    server_name api.octmon.com;  # 设置你的域名</span><br><span class="line"></span><br><span class="line">    # 配置 SSL 证书文件路径</span><br><span class="line">    ssl_certificate /etc/nginx/ssl/fullchain.crt;  # 证书文件路径</span><br><span class="line">    ssl_certificate_key /etc/nginx/ssl/private.pem;  # 私钥文件路径</span><br><span class="line"></span><br><span class="line">    # 推荐的 SSL 配置</span><br><span class="line">    ssl_protocols TLSv1.2 TLSv1.3;</span><br><span class="line">    ssl_ciphers HIGH:!aNULL:!MD5;</span><br><span class="line">    ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://127.0.0.1:8080;  # 转发请求到 Go 应用的 8080 端口</span><br><span class="line">        proxy_set_header Host $host;  # 保留原始请求的 Host 头</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;  # 传递客户端真实 IP 地址</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  # 转发客户端的 IP 地址</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $scheme;  # 保留请求协议（HTTP 或 HTTPS）</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;SSL证书配置前:&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;</summary>
+      
+    
+    
+    
+    <category term="server" scheme="http://example.com/categories/server/"/>
+    
+    
+    <category term="go" scheme="http://example.com/tags/go/"/>
+    
+  </entry>
   
   <entry>
     <title>脚本快速重启Go项目</title>

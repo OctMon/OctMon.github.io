@@ -10,22 +10,22 @@
     <meta name="copyright" content="李蒙">
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     <meta name="description" content="">
-    <meta name="description" content="用法： 1234567Future.wait([  PackageInfoUtil.init(),  SharedPreferencesUtil.init(),]).then((e) &#123;  log(&quot;init:&quot;, e);  callback();&#125;);  执行结果： 1flutter: init: &#x3D;&gt; [Instance of &#x27;Pack">
+    <meta name="description" content="SSL证书配置前: 1234567891011server &#123;    listen 80;  # 监听 HTTP 端口 80    server_name api.octmon.com;  # 设置你的域名     location &#x2F; &#123;        proxy_pass http:&#x2F;&#x2F;127.0.0.1:8080;  # 转发请求到 Go 应用的 8080 端口">
 <meta property="og:type" content="article">
-<meta property="og:title" content="flutter中使用 Future.wait 一次执行多个异步操作">
-<meta property="og:url" content="http://example.com/2020/06/09/Flutter%E4%B8%AD%E4%BD%BF%E7%94%A8-Future-wait-%E4%B8%80%E6%AC%A1%E6%89%A7%E8%A1%8C%E5%A4%9A%E4%B8%AA%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C/index.html">
+<meta property="og:title" content="Go应用Nginx配置SSL证书">
+<meta property="og:url" content="http://example.com/2025/01/11/Go%E5%BA%94%E7%94%A8nginx%E9%85%8D%E7%BD%AESSL%E8%AF%81%E4%B9%A6/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="用法： 1234567Future.wait([  PackageInfoUtil.init(),  SharedPreferencesUtil.init(),]).then((e) &#123;  log(&quot;init:&quot;, e);  callback();&#125;);  执行结果： 1flutter: init: &#x3D;&gt; [Instance of &#x27;Pack">
+<meta property="og:description" content="SSL证书配置前: 1234567891011server &#123;    listen 80;  # 监听 HTTP 端口 80    server_name api.octmon.com;  # 设置你的域名     location &#x2F; &#123;        proxy_pass http:&#x2F;&#x2F;127.0.0.1:8080;  # 转发请求到 Go 应用的 8080 端口">
 <meta property="og:locale">
-<meta property="article:published_time" content="2020-06-09T03:09:28.000Z">
-<meta property="article:modified_time" content="2024-12-11T06:27:35.141Z">
+<meta property="article:published_time" content="2025-01-11T14:19:08.000Z">
+<meta property="article:modified_time" content="2025-01-11T14:33:48.196Z">
 <meta property="article:author" content="李蒙">
-<meta property="article:tag" content="flutter">
+<meta property="article:tag" content="go">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon.ico">
-    <title>flutter中使用 Future.wait 一次执行多个异步操作 · octmon</title>
+    <title>Go应用Nginx配置SSL证书 · octmon</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -244,7 +244,7 @@
             <a href="/">OctMon</a>
         </div>
         <div class="post-title header-element">
-            <a href="#" class="post-name">flutter中使用 Future.wait 一次执行多个异步操作</a>
+            <a href="#" class="post-name">Go应用Nginx配置SSL证书</a>
         </div>
     </div>
 </header>
@@ -271,7 +271,7 @@
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
-                flutter中使用 Future.wait 一次执行多个异步操作
+                Go应用Nginx配置SSL证书
             <!-- 404 -->
         </h1>
         <!-- 副标题 -->
@@ -283,17 +283,17 @@
             <div class="post-intros">
                 <!-- 文章页标签  -->
                     <div class="post-intro-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="flutter">flutter</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="go">go</a>
 </div>
 
                 <!-- 文章字数统计 -->
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">35</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">297</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 <div class="post-intro-meta">
                     <!-- 撰写日期 -->
                     <span class="iconfont-archer post-intro-calander">&#xe676;</span>
-                    <span class="post-intro-time">2020/06/09</span>
+                    <span class="post-intro-time">2025/01/11</span>
                     <!-- busuanzi -->
                         <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                             <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
@@ -445,29 +445,30 @@
             <div class="container container-unloaded">
                 <main class="main post-page">
     <article class="article-entry">
-        <p>用法：</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Future.wait([</span><br><span class="line">  PackageInfoUtil.init(),</span><br><span class="line">  SharedPreferencesUtil.init(),</span><br><span class="line">]).then((e) &#123;</span><br><span class="line">  log(<span class="string">&quot;init:&quot;</span>, e);</span><br><span class="line">  callback();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+        <p>SSL证书配置前:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;  # 监听 HTTP 端口 80</span><br><span class="line">    server_name api.octmon.com;  # 设置你的域名 </span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://127.0.0.1:8080;  # 转发请求到 Go 应用的 8080 端口</span><br><span class="line">        proxy_set_header Host $host;  # 保留原始请求的 Host 头</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;  # 传递客户端真实 IP 地址</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  # 转发客户端的 IP 地址</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $scheme;  # 保留请求协议（HTTP 或 HTTPS）</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>执行结果：</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter: init: =&gt; [Instance of <span class="string">&#x27;PackageInfo&#x27;</span>, Instance of <span class="string">&#x27;SharedPreferences&#x27;</span>]</span><br></pre></td></tr></table></figure>
+<p>SSL证书配置后:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;  # 监听 HTTP 端口 80</span><br><span class="line">    server_name api.octmon.com;  # 设置你的域名</span><br><span class="line"></span><br><span class="line">    # 将 HTTP 请求重定向到 HTTPS</span><br><span class="line">    location / &#123;</span><br><span class="line">        return 301 https://$host$request_uri;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen 443 ssl;  # 监听 HTTPS 端口 443</span><br><span class="line">    server_name api.octmon.com;  # 设置你的域名</span><br><span class="line"></span><br><span class="line">    # 配置 SSL 证书文件路径</span><br><span class="line">    ssl_certificate /etc/nginx/ssl/fullchain.crt;  # 证书文件路径</span><br><span class="line">    ssl_certificate_key /etc/nginx/ssl/private.pem;  # 私钥文件路径</span><br><span class="line"></span><br><span class="line">    # 推荐的 SSL 配置</span><br><span class="line">    ssl_protocols TLSv1.2 TLSv1.3;</span><br><span class="line">    ssl_ciphers HIGH:!aNULL:!MD5;</span><br><span class="line">    ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://127.0.0.1:8080;  # 转发请求到 Go 应用的 8080 端口</span><br><span class="line">        proxy_set_header Host $host;  # 保留原始请求的 Host 头</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;  # 传递客户端真实 IP 地址</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  # 转发客户端的 IP 地址</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $scheme;  # 保留请求协议（HTTP 或 HTTPS）</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
     </article>
     <!-- license -->
         <div class="license-wrapper">
             <p>原文作者：<a href="http://example.com">李蒙</a>
-            <p>原文链接：<a href="http://example.com/2020/06/09/Flutter%E4%B8%AD%E4%BD%BF%E7%94%A8-Future-wait-%E4%B8%80%E6%AC%A1%E6%89%A7%E8%A1%8C%E5%A4%9A%E4%B8%AA%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C/">http://example.com/2020/06/09/Flutter%E4%B8%AD%E4%BD%BF%E7%94%A8-Future-wait-%E4%B8%80%E6%AC%A1%E6%89%A7%E8%A1%8C%E5%A4%9A%E4%B8%AA%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C/</a>
-            <p>发表日期：<a href="http://example.com/2020/06/09/Flutter%E4%B8%AD%E4%BD%BF%E7%94%A8-Future-wait-%E4%B8%80%E6%AC%A1%E6%89%A7%E8%A1%8C%E5%A4%9A%E4%B8%AA%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C/">June 9th 2020, 11:09:28 am</a>
-            <p>更新日期：<a href="http://example.com/2020/06/09/Flutter%E4%B8%AD%E4%BD%BF%E7%94%A8-Future-wait-%E4%B8%80%E6%AC%A1%E6%89%A7%E8%A1%8C%E5%A4%9A%E4%B8%AA%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C/">December 11th 2024, 2:27:35 pm</a>
+            <p>原文链接：<a href="http://example.com/2025/01/11/Go%E5%BA%94%E7%94%A8nginx%E9%85%8D%E7%BD%AESSL%E8%AF%81%E4%B9%A6/">http://example.com/2025/01/11/Go%E5%BA%94%E7%94%A8nginx%E9%85%8D%E7%BD%AESSL%E8%AF%81%E4%B9%A6/</a>
+            <p>发表日期：<a href="http://example.com/2025/01/11/Go%E5%BA%94%E7%94%A8nginx%E9%85%8D%E7%BD%AESSL%E8%AF%81%E4%B9%A6/">January 11th 2025, 10:19:08 pm</a>
+            <p>更新日期：<a href="http://example.com/2025/01/11/Go%E5%BA%94%E7%94%A8nginx%E9%85%8D%E7%BD%AESSL%E8%AF%81%E4%B9%A6/">January 11th 2025, 10:33:48 pm</a>
             <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     <!-- paginator -->
     <ul class="post-paginator">
         <li class="next">
-                <div class="nextSlogan">Next Post</div>
-                <a href="/2020/06/10/flutter%E9%85%8D%E7%BD%AE%E5%A4%9A%E4%B8%AA%E7%8E%AF%E5%A2%83/" title="flutter配置多个环境">
-                    <div class="nextTitle">flutter配置多个环境</div>
-                </a>
         </li>
         <li class="previous">
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2024/12/22/%E8%84%9A%E6%9C%AC%E5%BF%AB%E9%80%9F%E9%87%8D%E5%90%AFGo%E9%A1%B9%E7%9B%AE/" title="脚本快速重启Go项目">
+                    <div class="prevTitle">脚本快速重启Go项目</div>
+                </a>
         </li>
     </ul>
     <!-- comment -->
